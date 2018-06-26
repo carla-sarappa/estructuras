@@ -148,7 +148,7 @@ List copiar(List xs) {
     return newList;
 }
 
-/*************************************/
+/****************** CONSTRUCTORES *******************/
 void mkInsert(int x, List &xsref) {
 /*
     PROPOSITO: inserta x de manera ordenada en la lista
@@ -163,18 +163,21 @@ void mkInsert(int x, List &xsref) {
 //  newNode->next  = Nil();
 
     // Se calcula el punto de insercion
-    if (isNil(xsref) || x <= xsref->firstElem->value)
+    if (isNil(xsref) || x <= xsref->firstElem->value) {
         consLink(newNode, xsref);
-    else {
+    } else {
         current = xsref->firstElem;
-        while (not(current->next == NULL) && x > current->next->value)
+        while (not(current->next == NULL) && x > current->next->value) {
             current = current->next;
+        }
 
         // Es casi consLink, pero con otro espacio de memoria
         // Capturar esa similitud seria complejo y poco conveniente
         newNode->next = current->next;
         current->next = newNode;
-        if (xsref->lastElem == current) xsref->lastElem = newNode;
+        if (xsref->lastElem == current) {
+            xsref->lastElem = newNode;
+        }
         xsref->currentId = 0;
     }
 }
@@ -213,8 +216,9 @@ void printList(List xs)
    PRECOND: ninguna, es una operacion total
 */
 {
-    if (isNil(xs)) { cout << ("[]"); }
-    else {
+    if (isNil(xs)) {
+        cout << ("[]");
+    } else {
         Handle h = IniciarRecorrido(xs);
         cout << ("[ ");
         printElemType(elementoActual(xs, h));

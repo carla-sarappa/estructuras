@@ -3,7 +3,6 @@
 using namespace std;
 
 struct MaybeSt;
-
 typedef MaybeSt *Maybe;
 
 Maybe nothing();

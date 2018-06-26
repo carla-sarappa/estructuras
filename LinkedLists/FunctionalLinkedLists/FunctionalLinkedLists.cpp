@@ -28,6 +28,9 @@ List Cons(ELEM_TYPE x, List xs)
    OBSERVACIONES: no modifica xs, pero la comparte
 */
 {
+    // xs = [ 1 ] -> [ 2 ] -> NULL
+    // Cons(4, xs)
+    // [ 4 ] -> [ 1 ] -> [ 2 ] -> NULL
     // Se pide memoria
     lNode *newNode = new lNode;
     // Se asignan los elementos
@@ -58,9 +61,9 @@ List Snoc(List xs, ELEM_TYPE x)
 
     // Se copia la lista hasta llegar al ultimo elemento, y
     // se engancha el newNode
-    if (isNil(xs))
+    if (isNil(xs)) {
         retorno = newNode;
-    else {
+    } else {
         /*
            retorno = copiarLista(xs);
            current = retorno;

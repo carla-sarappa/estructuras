@@ -5,6 +5,8 @@
 #include <iostream>
 #include "Pokemon.h"
 #include "Fraccion.h"
+//#include "../LinkedLists/FunctionalLinkedLists/FunctionalLinkedLists.h"
+#include "../LinkedLists/DestructiveLinkedLists/DestructiveLinkedLists.h"
 
 using namespace std;
 
@@ -46,9 +48,74 @@ void ejercicio2() {
 
 }
 
+int sumar1(List ls) {
+    int total = 0;
+    List xs = ls;
+
+    while (not isNil(xs)) {
+        total = total + head(xs);
+        tkTail(xs);
+    }
+    return total;
+}
+
+int length1(List xs) {
+    int i;
+    for (i = 0; not isNil(xs); ++i) {
+        tkTail(xs);
+    }
+    return i;
+}
+
+void mapSucc1(List &xs) {
+    int i;
+    List ls = Nil();
+    for (i = 0; not isNil(xs);) {
+        mkCons(head(xs) + 1, ls);
+        tkTail(xs);
+    }
+    xs = ls;
+}
+
+void drop1(int n, List &xs) {
+
+}
+
+List take1(int n, List xs) {
+
+}
+
+void ejercicio5() {
+    List ls = Nil();
+    mkCons(4, ls);
+    mkCons(3, ls);
+    mkCons(2, ls);
+    mkCons(1, ls);
+
+//    List xs = Nil();
+//    mkCons(4, xs);
+//    mkCons(3, xs);
+//    mkCons(2, xs);
+//    mkCons(1, xs);
+
+    printList(ls);
+
+    List a = copiar(ls);
+    cout << sumar1(ls) << endl;
+
+    printList(a);
+
+    cout << length1(a) << endl;
+
+
+
+//    printList(take(2, xs));
+//
+}
+
 int main() {
 
-    ejercicio2();
+    ejercicio5();
 
     return 0;
 }
